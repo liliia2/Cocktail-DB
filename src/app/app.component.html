@@ -1,0 +1,12 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="content" role="main">
+    <app-filters
+      (сhangedCategories)="onChangedCategories($event)">
+    </app-filters>
+    <app-cocktails
+      [ngStyle]="{ 'overflow-y': 'auto', 'width': '100%' }"
+      [categoriesForLoad]="categoriesForLoad">
+    </app-cocktails>
+  </div>
+</div>

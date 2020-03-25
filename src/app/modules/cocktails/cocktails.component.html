@@ -1,0 +1,21 @@
+<div class="all-drinks">
+    <div class="category" *ngFor="let block of allDrinks"
+        (mouseover)="!screenHeight && getScreenHeight($event)">
+        <div class="category-name">
+            <h2>{{ block.category }}</h2>
+        </div>
+        <div class="all-category-drinks">
+            <div class="drink-el" *ngFor="let drink of block.drinks">
+                <div><img [src]="drink.strDrinkThumb"></div>
+                <p>{{ drink.strDrink }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="lastscreen" *ngIf="loadingInProcess"
+    [ngStyle]="{ 'height': screenHeight + 'px', 'margin-top': - screenHeight + 'px' }"
+    (mouseover)="!load && loadNextCategory()" (click)="!load && loadNextCategory()">
+</div>
+<div class="loading" *ngIf="loadingInProcess" (mouseover)="!load && loadNextCategory()">
+    <p>Loading...</p>
+</div>

@@ -1,0 +1,10 @@
+<div class="filters">
+    <div class="categories-el" *ngFor="let category of categories">
+        <input type="checkbox" class="checkbox"
+            [id]="category.strCategory"
+            [checked]="checkCategoryInShowedCategories(category.strCategory)"
+            (change)="changeShowedCategories(category.strCategory)">
+        <label [for]="category.strCategory">{{ category.strCategory }}</label>
+    </div>
+    <button (click)="pressApply()" [disabled]="categories && !showedCategories.length">Apply</button>
+</div>
