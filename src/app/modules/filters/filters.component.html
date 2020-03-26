@@ -1,4 +1,4 @@
-<div [ngClass]="!showMenu ? 'filters desktop' : 'filters mobile-view' ">
+<div [ngClass]="!showMenu ? 'filters desktop' : 'filters mobile-view'" *ngIf="categories">
     <div class="categories-el" *ngFor="let category of categories">
         <input type="checkbox" class="checkbox"
             [id]="category.strCategory"

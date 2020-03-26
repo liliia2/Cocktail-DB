@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxInfiniteScrollerModule } from 'ngx-infinite-scroller';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './modules/header/header.component';
@@ -23,6 +24,7 @@ import { drinksReducers } from './store/reducers/drinks.reducers';
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxInfiniteScrollerModule,
     StoreModule.forRoot({
       categories: categoriesReducers,
       drinks: drinksReducers

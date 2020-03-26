@@ -21,8 +21,6 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
   currentCategory: string;
   indexOfCurrentCategory: number;
   loadingInProcess = true;
-  loadCategory = false;
-  screenHeight: number;
 
   constructor(
     private store: Store<IAppState>
@@ -61,7 +59,6 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
   addDrinksSub(): void {
     const drinksSub = this.store.select(selectDrinks).subscribe(result => {
       if (result) {
-        this.loadCategory = false;
         const newItem = {
           category: this.currentCategory,
           drinks: result
@@ -75,8 +72,8 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
     this.subscription.add(drinksSub);
   }
 
-  getScreenHeight(event: any): void {
-    this.screenHeight = event.view.outerHeight;
+  public onScrollDown(): void {
+    if (this.loadingInProcess) { this.loadNextCategory(); }
   }
 
   loadNextCategory(): void {
@@ -87,7 +84,6 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
   getDrinks(): void {
     this.currentCategory = this.categoriesForLoad[this.indexOfCurrentCategory].strCategory;
     this.store.dispatch(new LoadDrinks(this.currentCategory));
-    this.loadCategory = true;
   }
 
 }

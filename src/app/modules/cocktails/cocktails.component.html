@@ -1,6 +1,6 @@
-<div class="all-drinks">
-    <div class="category" *ngFor="let block of allDrinks"
-        (mouseover)="!screenHeight && getScreenHeight($event)">
+<div class="all-drinks" id="scroller" *ngIf="allDrinks.length" ngxInfiniteScroller strategy="scrollingToBottom"
+    (onScrollDown)="onScrollDown()">
+    <div class="category" *ngFor="let block of allDrinks">
         <div class="category-name">
             <h2>{{ block.category }}</h2>
         </div>
@@ -11,11 +11,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="lastscreen" *ngIf="loadingInProcess"
-    [ngStyle]="{ 'height': screenHeight + 'px', 'margin-top': - screenHeight + 'px' }"
-    (mouseover)="!loadCategory && loadNextCategory()" (click)="!loadCategory && loadNextCategory()">
-</div>
-<div class="loading" *ngIf="loadingInProcess" (mouseover)="!loadCategory && loadNextCategory()">
-    <p>Loading...</p>
 </div>
