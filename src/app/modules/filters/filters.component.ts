@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, Input, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
@@ -17,6 +17,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   categories: ICategory[];
   showedCategories: Array<string>;
   @Output() сhangedCategories = new EventEmitter<ICategory[]>();
+  @Input() showMenu: boolean;
 
   constructor(
     private store: Store<IAppState>
@@ -40,20 +41,20 @@ export class FiltersComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  checkCategoryInShowedCategories(category: string): boolean {
+  checkInShowedCategories(category: string): boolean {
     if (this.showedCategories.includes(category)) {
       return true;
     } else { return false; }
   }
 
   changeShowedCategories(category: string): void {
-    if (this.checkCategoryInShowedCategories(category)) {
+    if (this.checkInShowedCategories(category)) {
       this.showedCategories = this.showedCategories.filter(item => item !== category);
     } else { this.showedCategories.push(category); }
   }
 
   pressApply(): void {
-    const categoriesForLoad = this.categories.filter(item => this.checkCategoryInShowedCategories(item.strCategory));
+    const categoriesForLoad = this.categories.filter(item => this.checkInShowedCategories(item.strCategory));
     this.сhangedCategories.emit(categoriesForLoad);
   }
 

@@ -1,8 +1,8 @@
-<div class="filters">
+<div [ngClass]="!showMenu ? 'filters desktop' : 'filters mobile-view' ">
     <div class="categories-el" *ngFor="let category of categories">
         <input type="checkbox" class="checkbox"
             [id]="category.strCategory"
-            [checked]="checkCategoryInShowedCategories(category.strCategory)"
+            [checked]="checkInShowedCategories(category.strCategory)"
             (change)="changeShowedCategories(category.strCategory)">
         <label [for]="category.strCategory">{{ category.strCategory }}</label>
     </div>

@@ -7,6 +7,34 @@
 
     img {
         margin: auto;
-        padding-left: 80px;
+    }
+}
+
+@media (max-width: 959px) {
+    .header {
+        .menu-icon, .close-menu-icon {
+            margin: 24px;
+            display: inline-block;
+        }
+
+        img {
+            width: calc(100% - 80px);
+            max-width: 334px;
+            height: auto;
+        }
+    }
+}
+
+@media (min-width: 960px) {
+    .header {
+        .menu-icon, .close-menu-icon {
+            display: none;
+        }
+
+        img {
+            padding-left: 80px;
+            width: 334px;
+            height: 50px;
+        }
     }
 }

@@ -10,12 +10,19 @@ import { ICategory } from './models/category';
 export class AppComponent implements OnInit {
   title = 'Cocktail-DB';
   categoriesForLoad: ICategory[];
+  showMenu: boolean = false;
 
   constructor() {  }
 
   ngOnInit() { }
 
-  onChangedCategories(value: ICategory[]) {
-    this.categoriesForLoad = value;
+  onOpenedMenu(value: boolean):void {
+    this.showMenu = value;
   }
+
+  onChangedCategories(value: ICategory[]):void {
+    this.categoriesForLoad = value;
+    this.showMenu = false;
+  }
+
 }

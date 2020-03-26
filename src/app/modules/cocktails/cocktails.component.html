@@ -14,8 +14,8 @@
 </div>
 <div class="lastscreen" *ngIf="loadingInProcess"
     [ngStyle]="{ 'height': screenHeight + 'px', 'margin-top': - screenHeight + 'px' }"
-    (mouseover)="!load && loadNextCategory()" (click)="!load && loadNextCategory()">
+    (mouseover)="!loadCategory && loadNextCategory()" (click)="!loadCategory && loadNextCategory()">
 </div>
-<div class="loading" *ngIf="loadingInProcess" (mouseover)="!load && loadNextCategory()">
+<div class="loading" *ngIf="loadingInProcess" (mouseover)="!loadCategory && loadNextCategory()">
     <p>Loading...</p>
 </div>

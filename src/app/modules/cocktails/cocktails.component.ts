@@ -21,7 +21,7 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
   currentCategory: string;
   indexOfCurrentCategory: number;
   loadingInProcess = true;
-  load = false;
+  loadCategory = false;
   screenHeight: number;
 
   constructor(
@@ -47,7 +47,7 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
     this.subscription.unsubscribe();
   }
 
-  addCategoriesSub() {
+  addCategoriesSub(): void {
     const categoriesSub = this.store.select(selectCategories).subscribe(result => {
       if (result && !this.categoriesForLoad) {
         this.categoriesForLoad = result;
@@ -58,10 +58,10 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
     this.subscription.add(categoriesSub);
   }
 
-  addDrinksSub() {
+  addDrinksSub(): void {
     const drinksSub = this.store.select(selectDrinks).subscribe(result => {
       if (result) {
-        this.load = false;
+        this.loadCategory = false;
         const newItem = {
           category: this.currentCategory,
           drinks: result
@@ -87,7 +87,7 @@ export class CocktailsComponent implements OnInit, OnDestroy, OnChanges {
   getDrinks(): void {
     this.currentCategory = this.categoriesForLoad[this.indexOfCurrentCategory].strCategory;
     this.store.dispatch(new LoadDrinks(this.currentCategory));
-    this.load = true;
+    this.loadCategory = true;
   }
 
 }
