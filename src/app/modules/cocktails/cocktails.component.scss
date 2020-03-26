@@ -104,6 +104,19 @@
             }
         }
     }
+
+    @media (max-width: 959px) {
+        .for-mobile {
+            text-align: center;
+            color: blue;
+        }
+    }
+
+    @media (min-width: 960px) {
+        .for-mobile {
+            display: none;
+        }
+    }
 }
 
 @media (max-width: 959px) {
