@@ -1,5 +1,5 @@
 # Website 
-cocktail-db-test.netlify.com
+https://cocktail-db-test.netlify.com
 
 # CocktailDB
 
